@@ -12,9 +12,19 @@ public class EventVector3 : UnityEvent<Vector3>
 
 public class MouseManager : MonoBehaviour
 {
+    // 单例模式
+    public static MouseManager Instance;
+
     // 用来保存射线碰撞到物体的相关信息
     RaycastHit hitInfo;
     public EventVector3 OnMouseClicked;
+
+    void Awake()
+    {
+        if (Instance != null)
+            Destroy(gameObject);
+        Instance = this;
+    }
 
     void Update()
     {
