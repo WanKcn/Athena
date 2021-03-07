@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
-// 事件 需要一个Vector3使人物知道往某一个世界坐标移动
-[System.Serializable]
-public class EventVector3 : UnityEvent<Vector3>
-{
-}
+// ----------     使用拖拽的方式     ----------
+// using UnityEngine.Events;
+// // 事件 需要一个Vector3使人物知道往某一个世界坐标移动
+// [System.Serializable]
+// public class EventVector3 : UnityEvent<Vector3>{ }
+// public EventVector3 OnMouseClicked;
 
 public class MouseManager : MonoBehaviour
 {
@@ -17,8 +18,9 @@ public class MouseManager : MonoBehaviour
 
     // 用来保存射线碰撞到物体的相关信息
     RaycastHit hitInfo;
-    public EventVector3 OnMouseClicked;
-
+    
+    public event Action<Vector3> OnMouseClicked;
+    
     void Awake()
     {
         if (Instance != null)
