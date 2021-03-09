@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
+    void Start()
     {
         MouseManager.Instance.OnMouseClicked += MoveToTarget;
     }
