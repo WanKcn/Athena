@@ -49,7 +49,13 @@ public class MouseManager : MonoBehaviour
         // 使用Physics.Raycast()方法来获取射线碰撞的信息
         if (Physics.Raycast(ray, out hitInfo))
         {
-            //TODO 切换鼠标贴图
+            // 设置鼠标的方式使用系统内置方法 Cursor.SetCursor(图片，hotspot来纪录鼠标点击顶点偏移，自动切换)
+            switch (hitInfo.collider.gameObject.tag)
+            {
+                case "Ground":
+                    Cursor.SetCursor(target, new Vector2(16, 16), CursorMode.Auto);
+                    break;
+            }
         }
     }
 
